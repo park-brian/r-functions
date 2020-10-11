@@ -133,6 +133,19 @@ if sys.platform == "win32":
     asyncio.set_event_loop(asyncio.ProactorEventLoop())
 ```
 
+---
+
+`jsonlite` parses objects and arrays as lists, so remember to typecast or transform your input as necessary. For example:
+
+```R
+# transform data into an atomic vector before getting its standard deviation
+standard_deviation <- function(data) {
+    sd(unlist(data))
+}
+```
+
+---
+
 When supplying custom environmental variables to an R subprocess, you must include a valid PATH which contains the R executable. On Windows, a SYSTEMROOT (usually "C:\Windows" or simply `%SystemRoot%`) must also be provided. 
 
 Specifying custom environmental variables for R can be useful if global changes are not desired, or if the user wishes to use a different version of R without reconfiguring their PATH.
